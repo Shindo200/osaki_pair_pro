@@ -1,9 +1,6 @@
 def mc(n)
-  if n > 100
-    n - 10
-  else
-    mc(mc(n+11))
-  end
+  return n - 10 if n > 100
+  mc(mc(n + 11))
 end
 
 p mc(ARGV[0].to_i)
