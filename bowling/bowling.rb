@@ -1,28 +1,24 @@
 # coding: utf-8
 class Bowling
-  def get_score(total_score)
-    total_score.push([0,0])
-    score = []
-    total_score.each_with_index { |frame, i|
-      score.push(sum_frame_score(frame))
-      if i < 9 && isStrike(frame)
-          score[i] += total_score[i+1][0] + total_score[i+1][1]
-          score[i] += total_score[i+2][0] if isStrike(total_score[i+1])
+  def get_total_score(frames)
+    frames.push([0,0])
+    scores = []
+    frames.each_with_index { |frame, i|
+      scores.push(frame.inject(:+))
+      if i < 9 && is_strike?(frame)
+          scores[i] += frames[i+1][0] + frames[i+1][1]
+          scores[i] += frames[i+2][0] if is_strike?(frames[i+1])
       end
-      score[i] += total_score[i+1][0] if isSpare(frame)
+      scores[i] += frames[i+1][0] if is_spare?(frame)
     }
-    score.inject(:+)
+    scores.inject(:+)
   end
-
-  def sum_frame_score(frame)
-    frame.inject(0) {|sum,n| sum + n }
-  end
-
-  def isStrike(frame)
+ 
+  def is_strike?(frame)
     frame[0] == 10
   end
-
-  def isSpare(frame)
-    !isStrike(frame) && frame[0]+frame[1] == 10
+ 
+  def is_spare?(frame)
+    !is_strike?(frame) && frame[0]+frame[1] == 10
   end
 end
