@@ -5,21 +5,21 @@ require "fizz"
 describe Fizz do
   let(:fizz) { Fizz.new }
 
-  describe "#print" do
+  describe "#fb" do
     it "引数に1を渡した場合、1を返すこと" do
-      fizz.print(1).should eq 1
+      fizz.fb(1).should eq 1
     end
 
     it "引数に3を渡した場合、fizzを返すこと" do
-      fizz.print(3).should eq "fizz"
+      fizz.fb(3).should eq "fizz"
     end
 
     it "引数に5を渡した場合、buzzを返すこと" do
-      fizz.print(5).should eq "buzz"
+      fizz.fb(5).should eq "buzz"
     end
 
     it "引数に15を渡した場合、fizzbuzzを返すこと" do
-      fizz.print(15).should eq "fizzbuzz"
+      fizz.fb(15).should eq "fizzbuzz"
     end
   end
 
